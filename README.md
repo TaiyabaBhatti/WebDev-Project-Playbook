@@ -14,7 +14,7 @@
 
  **Continuous Updates:** Stay tuned for regular updates! New projects, tips, and resource to keep you at the forefront of web development trends.
 
-# 🌈Get Involved:
+## 🌈Get Involved:
 
  **Contribute:** Share your projects, contribute improvements, or suggest new ideas. Let's build an ever-evolving hub for web enthusiasts!
 
