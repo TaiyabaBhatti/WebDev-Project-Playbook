@@ -44,6 +44,7 @@ inputField.style.color="gray";
 
 
 
+
 allKeys.forEach((key) => {
   key.addEventListener("click", () => display(key));
 });
