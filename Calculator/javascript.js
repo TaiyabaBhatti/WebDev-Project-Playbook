@@ -9,7 +9,9 @@ function calculate(){
    result.innerText=calculatedResult;
 }
 
-function display(key) {
+function display(click) {
+let key=click;
+
 result.style.fontSize="1rem";
 result.style.color="gray";
 
@@ -49,34 +51,32 @@ inputField.style.color="gray";
 }
 }
 
-allKeys.forEach((key) => {
-  key.addEventListener("click", () => display(key));
+allKeys.forEach((click) => {
+  let key=click;
+  key.addEventListener("click", () => display(click));
 });
 
 //  javascript for toggle button
 
-const toggle_btn=document.getElementById("scroller");
+const toggleBtn=document.getElementById("scroller");
 const ball=document.getElementById("ball");
 const calculator=document.getElementById("calculator-brick");
 const keys =document.querySelectorAll(".keys");
-const operation=document.getElementsByClassName("opt");
 const body = document.body;
-let ball_width = "35px";
-
-
+let ballWidth = "35px";
 
 function toggle(){
-console.log("hello");
-
  if(ballLeft){
-   ball.style.left = ball_width;
+   ball.style.left = ballWidth;
    calculator.style.backgroundColor="white";
    body.style.backgroundColor="gray";
-   toggle_btn.style.backgroundColor="rgb(20, 20, 20)";
+   toggleBtn.style.backgroundColor="rgb(20, 20, 20)";
    ball.style.backgroundColor="#fff";
    inputField.style.backgroundColor="#fff";
  //  inputField.style.color="black";
-   keys.forEach((key)=>{ 
+   keys.forEach((click)=>{ 
+
+    let key=click;
     if(!(key.classList.contains("opt"))){  
       key.style.color="rgb(20, 20, 20)";
       key.style.boxShadow="0px 0px 7px -2px rgb(127 126 124)";
@@ -84,18 +84,6 @@ console.log("hello");
     }  
    });
 
-
-
-
-
-
-
-
-// keys.forEach((key) => { key.style.color="rgb(20, 20, 20)";
-// key.style.boxShadow="0px 0px 7px -2px #524f4999";
-// key.backgroundImage="linear-gradient(to bottom right,#e7e3dc,#fff)";});
-
-// operation.forEach((opt) => {  opt.style.color="#fff";});  
  
    ballLeft=false;
  }
@@ -104,7 +92,7 @@ console.log("hello");
    ball.style.left="1px";
    calculator.style.backgroundColor="rgb(20, 20, 20)";
    body.style.backgroundColor="white";
-   toggle_btn.style.backgroundColor="#fff";
+   toggleBtn.style.backgroundColor="#fff";
    ball.style.backgroundColor="rgb(20, 20, 20)";
    inputField.style.backgroundColor="rgb(20, 20, 20)";
   //  inputField.style.color="#fff";
@@ -121,7 +109,9 @@ console.log("hello");
  }
 
 }
-toggle_btn.addEventListener("click",toggle);
+
+
+toggleBtn.addEventListener("click",toggle);
 
 
 
