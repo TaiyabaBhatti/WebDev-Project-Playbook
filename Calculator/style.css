@@ -16,6 +16,7 @@ body{
 font-family: 'Times New Roman', Times, serif;
 width: 100%;
 height: 100vh;
+;
 }
 
 #calculator-brick{
@@ -29,6 +30,7 @@ height: 100vh;
      margin: auto;
     padding: 10px 10px 15px 10px;
     border-radius: 21px;
+    margin-top: 20px;
 }
 #display-section{
    
@@ -48,18 +50,36 @@ height: 100vh;
     text-align: right;
 }
 #result{
-
 color: gray;
 margin-block: 5px;
-
-
-
 }
 
-
-
-
-
+#toggle{
+    position: relative;
+    width: 71px;
+    height: 39px;
+    border-radius: 24px 
+}
+#scroller{
+    position: relative;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    cursor: pointer;
+    background-color: var(--primary);
+}
+#ball{
+    position: absolute;
+    top: 2px;
+    left: 1px;
+    width: 35px;
+    height: 35px;
+    border: 2px solid ;
+    background-color: var(--dark);
+    border-radius: 50%;
+}
 
 
 
@@ -79,6 +99,8 @@ color: var(--primary);
 text-align: center;
 border-radius: 11px;
 box-shadow: 0 0 2px 0 gray;
+font-size: 1.3rem;
+font-family: sans-serif;
 }
 
 .opt{
