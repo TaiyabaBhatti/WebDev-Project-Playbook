@@ -31,6 +31,7 @@ height: 100vh;
     padding: 10px 10px 15px 10px;
     border-radius: 21px;
     margin-top: 20px;
+    box-shadow:0 0 14px 9px #524f49;
 }
 #display-section{
    
