@@ -2,6 +2,7 @@ let inputField = document.getElementById("enter-text");
 let allKeys = document.querySelectorAll(".keys");
 let result = document.getElementById("result");
 let ballLeft = true;
+let equalSign=0;
 
 function calculate(){
     let equation = inputField.value;
@@ -23,10 +24,31 @@ if(!ballLeft){
   inputField.style.color="rgb(20, 20, 20)";
 
 }
-  if ( key.innerText !== "C" && key.innerText !== "%" && key.innerText !== "del" && key.innerText !== "=") {
-    inputField.value += key.innerText;
-    if ( key.innerText !== "/" && key.innerText !== "+" && key.innerText !== "-" && key.innerText !== "*") {          calculate();  }
-  }//get values except C % del =
+  if ( key.innerText !== "C" && key.innerText !== "del" && key.innerText !== "=") {
+       
+      if(equalSign==0){
+        inputField.value += key.innerText;
+      }
+      if(equalSign>0){
+        equalSign=0;
+
+          if(key.innerText === "%" || key.innerText === "+" || key.innerText === "-" || key.innerText === "*" || key.innerText === "/" ){
+
+            inputField.value=result.innerText;
+        inputField.value += key.innerText; 
+          }
+
+          else{
+            inputField.value = key.innerText; 
+          }
+
+      }
+    
+    if ( key.innerText !== "/" && key.innerText !== "%" && key.innerText !== "+" && key.innerText !== "-" && key.innerText !== "*") {          calculate();  }
+
+   
+  
+  }//get values except C del =
   
   else if (key.innerText === "C") {         //clear all
     inputField.value = "0";
@@ -38,6 +60,7 @@ if(!ballLeft){
 }
 
 else if (key.innerText === "="){
+  equalSign=1;
   result.style.transition="0.3s";
 result.style.fontSize="2rem";
 if(ballLeft){
@@ -49,6 +72,9 @@ else if(!ballLeft){
 
 inputField.style.color="gray";
 }
+
+
+
 }
 
 allKeys.forEach((click) => {
@@ -69,7 +95,8 @@ function toggle(){
  if(ballLeft){
    ball.style.left = ballWidth;
    calculator.style.backgroundColor="white";
-   body.style.backgroundColor="gray";
+   
+   body.style.backgroundColor="rgb(20, 20, 20)";
    toggleBtn.style.backgroundColor="rgb(20, 20, 20)";
    ball.style.backgroundColor="#fff";
    inputField.style.backgroundColor="#fff";
@@ -99,7 +126,7 @@ function toggle(){
    keys.forEach((key)=>{
       
     if(!(key.classList.contains("opt"))){    
-      // key.style.color="#fff";
+       key.style.color="#fff";
       key.style.boxShadow="0 0 2px 0 gray";
       key.style.backgroundImage=" linear-gradient(to bottom right,rgb(20, 20, 20),#413e3a)";
     }
