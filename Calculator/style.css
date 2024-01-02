@@ -20,7 +20,6 @@ height: 100vh;
 }
 
 #calculator-brick{
-
     background-color: var(--dark);
     width: fit-content;
     display: grid;
@@ -85,13 +84,16 @@ margin-block: 5px;
 
 
 #keys-section{
+
 display: grid;
 grid-template-columns: repeat(4,1fr);
 grid-gap: 5px;
 grid-auto-rows: minmax(auto, 54px);
 width: 223px;
+height: 290px;
 }
 .keys{
+ 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,6 +106,17 @@ font-size: 1.3rem;
 font-family: sans-serif;
 }
 
+.animation{
+  
+    position: relative;
+}
+.fa-duotone{
+    position: absolute;
+}
+
+
+
+
 .opt{
     background-image: linear-gradient(to bottom right,rgb(255 86 5),#e98f2ffa);
     box-shadow: 0 0 3px 1px rgb(255 86 5);;
@@ -112,3 +125,11 @@ font-family: sans-serif;
 .keys:active{
 transform: scale(0.98);
 }
+
+ .add{
+
+display: none;
+
+
+
+} 
