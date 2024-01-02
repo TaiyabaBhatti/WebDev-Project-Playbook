@@ -1,8 +1,12 @@
 let inputField = document.getElementById("enter-text");
-let allKeys = document.querySelectorAll(".keys");
+let allKeys = document.querySelectorAll("#keys-section *");
 let result = document.getElementById("result");
 let ballLeft = true;
 let equalSign=0;
+let maximizeStatus=false;
+const animation=document.getElementsByClassName("animation");
+const keys_section=document.getElementById("keys-section");
+let addRows=document.querySelectorAll(".add");
 
 function calculate(){
     let equation = inputField.value;
@@ -12,7 +16,6 @@ function calculate(){
 
 function display(click) {
 let key=click;
-
 result.style.fontSize="1rem";
 result.style.color="gray";
 
@@ -20,18 +23,15 @@ if(ballLeft){
   inputField.style.color="#fff";
 }
 if(!ballLeft){
-
   inputField.style.color="rgb(20, 20, 20)";
-
 }
-  if ( key.innerText !== "C" && key.innerText !== "del" && key.innerText !== "=") {
+  if (key.innerText==="1" || key.innerText==="2" || key.innerText==="3" || key.innerText==="4" || key.innerText==="5" || key.innerText==="6" || key.innerText==="7" || key.innerText==="8" || key.innerText==="9" || key.innerText === "%" || key.innerText === "+" || key.innerText === "-" || key.innerText === "*" || key.innerText === "/" ) {
        
       if(equalSign==0){
         inputField.value += key.innerText;
       }
       if(equalSign>0){
         equalSign=0;
-
           if(key.innerText === "%" || key.innerText === "+" || key.innerText === "-" || key.innerText === "*" || key.innerText === "/" ){
 
             inputField.value=result.innerText;
@@ -44,10 +44,8 @@ if(!ballLeft){
 
       }
     
-    if ( key.innerText !== "/" && key.innerText !== "%" && key.innerText !== "+" && key.innerText !== "-" && key.innerText !== "*") {          calculate();  }
-
+    if ( key.innerText !== "/" && key.innerText !== "%" && key.innerText !== "+" && key.innerText !== "-" && key.innerText !== "*" ) {          calculate();  }
    
-  
   }//get values except C del =
   
   else if (key.innerText === "C") {         //clear all
@@ -72,9 +70,6 @@ else if(!ballLeft){
 
 inputField.style.color="gray";
 }
-
-
-
 }
 
 allKeys.forEach((click) => {
@@ -90,6 +85,40 @@ const calculator=document.getElementById("calculator-brick");
 const keys =document.querySelectorAll(".keys");
 const body = document.body;
 let ballWidth = "35px";
+
+
+function maximize(){
+if(maximizeStatus===false){
+  allKeys.forEach((click) => {
+    let key=click;
+
+    key.style.fontSize="0.8rem";
+
+    if(key.classList.contains("add")){
+        key.style.display="flex";
+    }
+  });
+  keys_section.style.gridTemplateColumns="repeat(5,1fr)";
+     maximizeStatus=true; 
+}
+else if(maximizeStatus===true){
+
+  allKeys.forEach((click) => {
+    let key=click;
+    key.style.fontSize="1.3rem";
+    if(key.classList.contains("add")){
+        key.style.display="none";
+    }
+  });
+  keys_section.style.gridTemplateColumns="repeat(4,1fr)";
+     maximizeStatus=false; 
+}
+      
+
+
+
+
+}
 
 function toggle(){
  if(ballLeft){
@@ -136,8 +165,6 @@ function toggle(){
  }
 
 }
-
-
 toggleBtn.addEventListener("click",toggle);
 
 
