@@ -109,6 +109,7 @@ font-family: sans-serif;
 .animation{
   
     position: relative;
+    transition: 1.5;
 }
 .fa-duotone{
     position: absolute;
@@ -127,9 +128,9 @@ transform: scale(0.98);
 }
 
  .add{
-
 display: none;
-
-
-
 } 
+
+.animation:active{
+transform: rotate(45deg);
+}
