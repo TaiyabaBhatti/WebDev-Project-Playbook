@@ -1,31 +1,66 @@
 let inputField = document.getElementById("enter-text");
 let allKeys = document.querySelectorAll("#keys-section *");
 let result = document.getElementById("result");
+let keys_section=document.getElementById("keys-section");
+let rations=document.querySelectorAll(".trig");
+let operator;
+let number;
 let ballLeft = true;
 let equalSign=0;
 let maximizeStatus=false;
-const animation=document.getElementsByClassName("animation");
-const keys_section=document.getElementById("keys-section");
+let supScript=false;
+let equation;
+let calculatedResult;
+let trigfun;
 let addRows=document.querySelectorAll(".add");
 
+
 function calculate(){
-    let equation = inputField.value;
-    let calculatedResult = eval(equation);
-   result.innerText=calculatedResult;
+    equation = inputField.value;
+     calculatedResult = eval(equation);
+   result.innerText=parseFloat(calculatedResult.toFixed(4));
+}
+function calculateTRI(){
+   equation=inputField.value.replace(operator,'').replace('(','');
+ 
+   number=parseFloat(equation);
+  
+  if (operator === "sin") {
+    calculatedResult = Math.sin((number*Math.PI)/180);
+    console.log(calculatedResult);
+} else if (operator === "cos") {
+    calculatedResult = Math.cos((number*Math.PI)/180);
+} else if (operator === "tan") {
+  if (number % 180 === 90) {
+    result.innerText = "Undefined"; // Display 'Undefined' for tan(90) case
+    return;
+  }
+    calculatedResult = Math.tan((number*Math.PI)/180);
+}
+result.innerText=calculatedResult.toFixed(4);
 }
 
 function display(click) {
 let key=click;
 result.style.fontSize="1rem";
 result.style.color="gray";
-
 if(ballLeft){
   inputField.style.color="#fff";
 }
 if(!ballLeft){
   inputField.style.color="rgb(20, 20, 20)";
 }
-  if (key.innerText==="1" || key.innerText==="2" || key.innerText==="3" || key.innerText==="4" || key.innerText==="5" || key.innerText==="6" || key.innerText==="7" || key.innerText==="8" || key.innerText==="9" || key.innerText === "%" || key.innerText === "+" || key.innerText === "-" || key.innerText === "*" || key.innerText === "/" ) {
+
+if (key.innerText === "sin" || key.innerText === "cos" || key.innerText === "tan") {
+  // Extract the operator (sin, cos, tan) and the number from the input
+  operator = key.innerText;
+  inputField.value+=key.innerText+"(";
+  
+  // Perform the calculation based on the operator
+  // Update the input field and display the calculated result
+}
+
+  if (key.innerText==="1"|| key.innerText==="." ||key.innerText==="0" || key.innerText==="2" || key.innerText==="3" || key.innerText==="4" || key.innerText==="5" || key.innerText==="6" || key.innerText==="7" || key.innerText==="8" || key.innerText==="9" || key.innerText === "%" || key.innerText === "+" || key.innerText === "-" || key.innerText === "*" || key.innerText === "/" ) {
        
       if(equalSign==0){
         inputField.value += key.innerText;
@@ -40,20 +75,31 @@ if(!ballLeft){
 
           else{
             inputField.value = key.innerText; 
+
           }
 
       }
-    
+
+if(inputField.value.includes("tan") || inputField.value.includes("cos") || inputField.value.includes("sin")){
+  if(key.innerText !== "sin" && key.innerText !== "cos" && key.innerText !== "tan"){
+  calculateTRI();
+}
+}
+   else{
     if ( key.innerText !== "/" && key.innerText !== "%" && key.innerText !== "+" && key.innerText !== "-" && key.innerText !== "*" ) {          calculate();  }
-   
-  }//get values except C del =
-  
+   }
+  }
+  else if(key.innerText === "pi"){
+    inputField.value+=(Math.PI).toFixed(3);
+    calculate();
+
+  }
   else if (key.innerText === "C") {         //clear all
     inputField.value = "0";
     result.innerText = " ";
   }
 
-   else if (key.innerText === "del") {        //delete last character
+   else if (key.innerText === "del") {  //delete last character
       inputField.value=inputField.value.slice(0,-1);
 }
 
@@ -67,7 +113,6 @@ if(ballLeft){
 else if(!ballLeft){
   result.style.color="rgb(20,20,20)";
 }
-
 inputField.style.color="gray";
 }
 }
@@ -77,8 +122,21 @@ allKeys.forEach((click) => {
   key.addEventListener("click", () => display(click));
 });
 
-//  javascript for toggle button
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  javascript for toggle button
 const toggleBtn=document.getElementById("scroller");
 const ball=document.getElementById("ball");
 const calculator=document.getElementById("calculator-brick");
@@ -86,19 +144,19 @@ const keys =document.querySelectorAll(".keys");
 const body = document.body;
 let ballWidth = "35px";
 
-
 function maximize(){
+ 
 if(maximizeStatus===false){
   allKeys.forEach((click) => {
     let key=click;
-
+       
     key.style.fontSize="0.8rem";
-
     if(key.classList.contains("add")){
         key.style.display="flex";
     }
   });
   keys_section.style.gridTemplateColumns="repeat(5,1fr)";
+  
      maximizeStatus=true; 
 }
 else if(maximizeStatus===true){
@@ -113,11 +171,7 @@ else if(maximizeStatus===true){
   keys_section.style.gridTemplateColumns="repeat(4,1fr)";
      maximizeStatus=false; 
 }
-      
-
-
-
-
+    
 }
 
 function toggle(){
@@ -167,12 +221,23 @@ function toggle(){
 }
 toggleBtn.addEventListener("click",toggle);
 
+function superScript(){
+  let text;
+  let fun;
+if(!supScript){
+rations.forEach((ratio)=>{
+fun=ratio;
+text=ratio.innerText;
+fun.innerHTML+='<sup>⁻¹</sup>';
+});
+supScript=true;
+}
 
-
-
-
-
-
-
-
+else if(supScript){
+  rations.forEach((ratio)=>{
+   ratio.innerHTML= ratio.innerHTML.replace('<sup>⁻¹</sup>','');
+    });
+    supScript=false;
+}
+}
 
