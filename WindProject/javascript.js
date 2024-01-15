@@ -20,6 +20,8 @@ function rotateBlades() {
 }
 setInterval(rotateBlades,100);
 
+                // Popup Effect
+
 const sliderElement=document.getElementById("slider");
 const circleElement=document.getElementById("circle");
 const popupElement=document.getElementById("popup");
@@ -39,6 +41,7 @@ function cross(){
     circleElement.style.filter="none";
     popupElement.style.display="none";
    
+
     }
 loginButton.addEventListener("click",popup);
 crossIcon.addEventListener("click",cross)
