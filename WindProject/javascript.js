@@ -51,27 +51,43 @@ crossIcon.addEventListener("click",cross)
 const form=document.querySelector("form");
 const emailField=form.querySelector(".email-field");
 const emailInput=emailField.querySelector("#email-address");
-const passwordField=form.querySelector(".email-field");
+const passwordField=form.querySelector(".password-field");
 const passwordInput=passwordField.querySelector("#password");
-const spanError=document.querySelector(".email-error");
+const emailError=document.querySelector(".email-error");
+const passwordError=document.querySelector("article");
+let hideIcon=passwordField.querySelector(".show-hide");
+let hideStatus=true;
 
+// Open dashboard
+function openDashboard(){
+ let pageUrl="file:///D:/WebDev-ProjectPlaybook-/WindProject/Dashboard.html";
+ window.open(pageUrl,"_blank")
+
+
+}
+
+// check email validation
 function check_emailField(){
-
 const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 if(!emailInput.value.match(pattern)){
-   spanError.classList.add("invalid");
+   emailError.classList.add("invalid");
+
    return;
+   
 }
-spanError.classList.remove("invalid");
+emailError.classList.remove("invalid");
+cross();
+openDashboard();
 }
 
+// function check_emailField(){
 
-
-
-
-
-
-
+//     if(!emailInput.value.match(pattern)){
+//        emailError.classList.add("invalid");
+//        return;
+//     }
+//     emailError.classList.remove("invalid");
+//     }
 
 
 
@@ -79,19 +95,33 @@ form.addEventListener("submit",(e) => {
 
 e.preventDefault();
 check_emailField();
-
-
 emailInput.addEventListener("keyup",check_emailField);
 
-
-
-})
-
+});
 
 
 
+// Hide Unhide
+function hideUnHide(){
+
+if(hideStatus==true){
+hideIcon.classList.add("bx-show");
+hideIcon.classList.remove("bxs-hide");
+     hideStatus=false;
+     return passwordInput.type="text";
+}
+
+ else if(hideStatus==false){
+    hideIcon.classList.add("bxs-hide");
+    hideIcon.classList.remove("bx-show");
+    hideStatus=true;
+    passwordInput.type="password";
+}
+}
 
 
+
+hideIcon.addEventListener("click",hideUnHide);
 
 
 
