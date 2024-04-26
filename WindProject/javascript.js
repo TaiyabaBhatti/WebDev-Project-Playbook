@@ -71,9 +71,8 @@ function check_emailField(){
 const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 if(!emailInput.value.match(pattern)){
    emailError.classList.add("invalid");
-
    return;
-   
+
 }
 emailError.classList.remove("invalid");
 cross();
