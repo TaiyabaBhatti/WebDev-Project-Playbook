@@ -1,0 +1,134 @@
+*, *::after,*::before{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+
+
+:root{
+
+--light-gray:rgb(231, 228, 228);
+--dark-gray:rgb(107, 105, 105);
+--light-blue:rgb(14, 144, 250);
+
+
+}
+
+
+
+
+
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(234, 238, 238); */
+}
+
+
+#progress-div{
+    width: 80vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+   
+}
+
+#progress-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.indicator{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 35px;
+     width: 35px;
+     border: 3px solid var(--light-gray);
+     border-radius: 50%;
+     -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+     -ms-border-radius: 50%;
+     -o-border-radius: 50%;
+     color: var(--dark-gray);
+     transition: border-color 0.3s linear;
+     -webkit-transition: border-color 0.3s linear;
+     -moz-transition: border-color 0.3s linear;
+     -ms-transition: border-color 0.3s linear;
+     -o-transition: border-color 0.3s linear;
+}
+
+.indicator:is(.current){
+    border-color:var(--light-blue); 
+}
+
+
+
+.timeline{
+    position: relative;
+    width: 50px;
+    border:2px solid var(--light-gray); 
+    
+}
+
+.timeline::after{
+    position: absolute;
+    content: "";
+    top: -2px;
+    left: -2px;
+    border:none;
+    width: 0;
+    transition:width 0.2s linear ;
+    -webkit-transition:width 0.2s linear ;
+    -moz-transition:width 0.2s linear ;
+    -ms-transition:width 0.2s linear ;
+    -o-transition:width 0.2s linear ;
+}
+
+.timeline:is(.current)::after{
+    border:2px solid var(--light-blue); 
+    width: 108%;
+}
+
+
+
+ .btn{
+    background-color: var(--light-blue);
+       border: none;
+       cursor: pointer;
+       color: white;
+       width: 100px;
+       height: 30px;
+       border-radius:5px;
+       -webkit-border-radius:5px;
+       -moz-border-radius:5px;
+       -ms-border-radius:5px;
+       -o-border-radius:5px;
+       transition:background-color 0.2s linear ;
+       -webkit-transition:background-color 0.2s linear ;
+       -moz-transition:background-color 0.2s linear ;
+       -ms-transition:background-color 0.2s linear ;
+       -o-transition:background-color 0.2s linear ;
+}
+
+.btn:active{
+    transform: scale(0.98);
+    -webkit-transform: scale(0.98);
+    -moz-transform: scale(0.98);
+    -ms-transform: scale(0.98);
+    -o-transform: scale(0.98);
+}
+
+.btn:disabled{
+    background-color: var(--light-gray);
+    cursor: not-allowed;
+}

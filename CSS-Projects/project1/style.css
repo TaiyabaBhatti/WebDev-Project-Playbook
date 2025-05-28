@@ -1,0 +1,319 @@
+:root{
+    --div-width:200px;
+    --div-height:200px;
+    --gap-grid:10;
+    --border-color1:rgb(16, 128, 233);
+    --background-1:black;
+    --background-2:rgba(63, 61, 61, 0.979);
+    --font-size1:0.9;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: sans-serif;
+}
+
+
+
+
+
+
+/* First */
+
+p.post{
+font-size: 2rem;
+}
+
+span.spoiler-text{
+    background-color: var(--background-1);
+    transition:0.5s linear;
+    -webkit-transition:0.5s linear;
+    -moz-transition:0.5s linear;
+    -ms-transition:0.5s linear;
+    -o-transition:0.5s linear;
+}
+
+span.spoiler-text:hover{
+    cursor: pointer;
+    background-color: transparent;
+}
+
+/* Second */
+
+div.container{
+     width:200px;
+    height:100px;
+    background-color: var(--background-1);
+    border: 10px solid;
+    border-image-source: linear-gradient(to right,red,purple);
+    border-image-slice: 1; 
+    margin: auto;
+}
+
+div.container:hover{
+    border-image-source: linear-gradient(to left,red,purple);
+}
+
+p.paragraph{
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 5px;
+}
+
+/* third */
+
+.search-container{
+
+}
+#search-bar{
+    border: 2px solid;
+    border-color: aquamarine;
+    min-width: 70px;
+    width: 100px;
+    padding:10px 5px;
+    outline: none;
+    font-size: 1.2rem;
+    transition:width 0.2s linear ;
+    -webkit-transition:width 0.2s linear ;
+    -moz-transition:width 0.2s linear ;
+    -ms-transition:width 0.2s linear ;
+    -o-transition:width 0.2s linear ;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+#search-bar.active{
+    width: 300px;
+    border-color:var(--border-color1);
+    box-shadow:0px 0px 3px  rgba(16, 128, 233, 0.986);
+}
+
+#search-bar::placeholder{
+    font-weight: bolder;
+}
+
+#search-bar:focus::placeholder{
+    color: transparent;
+}
+
+ /* <!-- Fourth Task --> */
+
+div.card-container{
+    background-color:var(--background-2) ;
+    width:50vw;
+    height:auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.card-container:hover .public-status{
+    display: flex;
+
+}
+
+div.card-image .image, div.card-container,  div.card-content .profile-pic{
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+ div.card-image .image{
+    width:100%;
+    height: auto;
+ }
+div.card-content{                 /*child-2*/
+display:flex;
+align-items:center;
+gap:10px;
+}
+ .profile-pic{
+    width: 40px;
+ }
+
+.project-detalis{
+    line-height: 3px;
+   
+}
+
+.project-detalis p.project-name{
+    font-size: 1.1rem;
+font-weight: bolder;
+color: white;
+}
+
+.project-detalis p.author-name{
+    color: rgb(180, 178, 178);
+    font-size: calc(var(--font-size1) * 1rem);
+}
+
+div.public-status {
+    /*child-3*/display:none;
+    align-items:center;
+    gap: 15px;
+  
+}
+
+.public-status div.block{
+    background-color:var(--background-1) ;
+    color: white;
+    padding:3px 7px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.public-status i, .public-status span{
+font-size: calc(var(--font-size1) * 1rem);
+}
+
+ /* <!-- Fifth Task: Loading Animation --> */
+
+div.loading-dots-cont{
+
+    --circle-dot-color1:gray;
+    --circle-dot-color2:rgb(177, 171, 171);
+    --circle-dot-color3:rgb(223, 219, 219);
+}
+
+
+.loading-dots-cont{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap: 15px;
+}
+
+.dot{
+       width: 50px;
+       height: 50px;
+       animation-iteration-count: infinite;
+       animation-play-state: running;
+}
+
+.circle-dot{
+    animation-name: loading;
+    animation-direction:alternate;
+    animation-duration: 1s;
+    border-radius:50% ;
+    background-color:var(--circle-dot-color3);
+    -webkit-border-radius:50% ;
+    -moz-border-radius:50% ;
+    -ms-border-radius:50% ;
+    -o-border-radius:50% ;
+}
+@keyframes loading {
+
+   0%{
+    background-color:var(--circle-dot-color1);
+   }
+
+100%{
+    background-color:var(--circle-dot-color3);
+    width: 40px;
+    height: 40px;
+}
+
+
+    
+}
+
+/* <!-- Fifth Task: Loading Animation-2 --> */
+.square-dot{
+width: 30px;;
+height: 30px;;
+    animation-name: transform;
+    animation-duration: 2s;
+    animation-delay: 5s;
+
+}
+
+
+#square-loads .square-dot:nth-child(1){
+    background-color:red;
+}
+
+#square-loads .square-dot:nth-child(2){
+    background-color:blue;
+}
+
+#square-loads .square-dot:nth-child(3){
+    background-color:purple;
+}
+
+@keyframes transform {
+    
+from{ transform:rotate(-45deg); -webkit-transform:rotate(-45deg); -moz-transform:rotate(-45deg); -ms-transform:rotate(-45deg); -o-transform:rotate(-45deg); 
+    
+}
+    to
+{ transform: rotate(45deg); -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg);
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* <!-- sixth Task --> */
+   /* <!-- seventh Task --> */
+    /* <!-- eighth Task --> */
+     /* <!-- nineth Task --> */
+      /* <!-- tenth Task --> */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

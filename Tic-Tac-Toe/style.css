@@ -1,0 +1,198 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+html{
+    font-size: 62.78%;
+}
+:root{
+     --marke-color-focus:rgba(41, 40, 40, 0.493);
+     --marke-color-clicked:black;
+    --marked-size:calc(100% * 0.9);
+}
+
+
+
+.board{
+width: 30rem;
+height: 30rem;
+background-color: black;
+display: grid;
+grid-template-columns: repeat(3,1fr);
+gap: 0.2rem;
+}
+
+.cell{
+    position: relative;
+    width: 100%;
+    position: relative;
+background-color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+
+
+}
+
+
+
+#winning-banner{
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#winning-banner h1{
+    font-size: 4rem;
+    text-transform: capitalize;
+}
+
+.btn{
+    padding: 1rem 3rem;
+    outline: none;
+    border: none;
+    background-color:white;
+    color: black;
+    box-shadow: 0 0 0.2rem gray;
+    transition: transform 0.3s linear;
+    -webkit-transition: transform 0.3s linear;
+    -moz-transition: transform 0.3s linear;
+    -ms-transition: transform 0.3s linear;
+    -o-transition: transform 0.3s linear;
+cursor: pointer;
+}
+
+.cell.removePoniter{
+    cursor: not-allowed;
+}
+
+.btn:hover{
+    box-shadow:none;
+    color: white;
+    background-color: black;
+}
+
+.btn:active{
+    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+}
+
+
+/* .marked{
+    border: none;
+    background-color: red;
+width: var(--marked-size);
+height: var(--marked-size);
+/* margin: auto; */
+ 
+.cell.x,.cell.circle {
+    cursor: not-allowed;
+}
+
+.board.x .cell:hover{
+
+}
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.x .cell:not(.x):not(.circle):hover::before
+{
+position: absolute;
+content: "";
+width: calc(var(--marked-size) * 0.06);
+height: var(--marked-size);
+
+}
+
+.cell.x::before,
+.cell.x::after,.cell.circle::before{
+    background-color: var(--marke-color-clicked);
+}
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::before{
+    background-color: var(--marke-color-focus);
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before
+{
+    transform-origin: center;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after
+{
+    transform-origin: center;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+}
+
+
+.cell.circle::after,
+.cell.circle::before,
+.board.circle .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before
+{
+    position: absolute;
+    content: "";
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+
+.cell.circle::before,
+.board.circle .cell:not(.x):not(.circle):hover::before
+{
+    width: var(--marked-size);
+    height: var(--marked-size);
+     
+}
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::after
+{
+    width:calc(var(--marked-size) * 0.87);
+    height: calc(var(--marked-size) * 0.87);
+    background-color: white;   
+}
+
+.btn{
+
+}

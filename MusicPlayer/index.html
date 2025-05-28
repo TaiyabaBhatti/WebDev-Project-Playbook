@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+
+<!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/24f84cfde2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+<section id="audio-box">
+<div class="container">
+    <div class="dashboard">
+      <div class="top-sec">
+        <i class="fa-solid fa-arrow-left"></i>
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div class="circle-image">
+        <img src="./Images/about-banner.jpg" alt="Circle image">
+      </div>
+
+      <div class="title">
+      <h1 class="heading">Song Name</h1>
+<p class="paragraph">Author Name</p>
+      </div>
+
+      <div class="audio-player">
+        <audio id="song" controls >
+            <source src="./Images/001.mp3">
+        </audio>
+      </div>
+      <input type="range" value="0" id="input-bar">
+
+<div class="control-icons">
+    <i class="fa-solid fa-backward"></i>
+    <i class="fa-solid fa-play" id="play"></i>
+    <i class="fa-solid fa-forward"></i>
+
+</div>
+      </div>
+</div>
+</section>
+
+
+
+
+
+<script src="./javascript.js"></script>
+
+</body>
+</html>
